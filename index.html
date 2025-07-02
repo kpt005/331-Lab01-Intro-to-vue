@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- v-bind shorten as :
+     v-on shorten as @
+     v-model shorten as :model
+     v-bind:href shorten as :href
+     v-bind:src shorten as :src
+-->
+
 <head>
     <meta charset="UTF-8" />
     <title>Intro SE331</title>
@@ -12,7 +19,7 @@
 
 <body>
     <div id="app">
-        
+
         <div class="nav-bar"></div>
         <div class="cart">Cart({{cart}})</div>
 
@@ -37,14 +44,14 @@
                 <li v-for="detail in details">{{detail}}</li>
             </ul>
             <div style="font-size: 1.3em;">Sizes: <span v-for="(size, idx) in sizes">{{size}}<span v-if="idx < sizes.length - 1">, </span></span></div>
-            <div style="font-size: 1.3em; margin-bottom: 1em;" v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)">
+            <div style="font-size: 1.2em; " v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)" class="color-circle" v-bind:style="{ backgroundColor: variant.color }">
                 {{variant.color}}
             </div>
-            
+
             <!-- Display button using css style -->
             <div style="display: flex; gap: 1em;">
-                <button class="button" style="min-width: 120px; padding: 0.7em 1.2em; font-size: 1.1em; border-radius: 8px; box-shadow: 0 2px 6px #ccc;" v-on:click="addToCart">Add to Cart</button>
-                <button class="button" style="min-width: 120px; padding: 0.7em 1.2em; font-size: 1.1em; border-radius: 8px; box-shadow: 0 2px 6px #ccc;" v-on:click="toggleInStock">Toggle In Stock</button>
+                <button class="button" v-bind:disabled="!inStock" @click="addToCart" :class="['button', {disabledButton: !inStock}]">Add to Cart</button>
+                <button class="button" style="min-width: 120px; padding: 0.7em 1.2em; font-size: 1.1em; border-radius: 8px; box-shadow: 0 2px 6px #ccc;"  v-on:click="toggleInStock">Toggle In Stock</button>
             </div>
             
         </div>
