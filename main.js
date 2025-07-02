@@ -5,17 +5,18 @@ const app = createApp({
     const product = ref('Boots');
     const brand = ref('SE 331');
     const description = ref('A pair of warm, comfortable boots.');
-    //const image = ref('./assets/images/socks_green.jpg');
     const image = computed(() => {
       return variants.value[selectedVariant.value].image;
     });
     const productLink = ref('https://www.camt.cmu.ac.th');
-    //const inStock = ref(false);
     const inStock = computed(() => {
       return variants.value[selectedVariant.value].quantity
     });
     const inventory = ref(100);
     const onSale = ref(true);
+    const onSaleString = computed(() => {
+      return `${brand.value} ${product.value} is on sale!`;
+    });
     const details = ref([
         '50% cotton',
         '30% wool',
@@ -55,6 +56,7 @@ const app = createApp({
       inStock,
       inventory,
       onSale,
+      onSaleString,
       details,
       variants,
       sizes,

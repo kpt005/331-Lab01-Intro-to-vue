@@ -40,7 +40,7 @@
             <p v-if="inStock && inventory > 10">In Stock</p>
             <p v-else-if="inStock && inventory <= 10 && inventory > 0 ">Almost out of Stock</p>
             <p v-else>Out of Stock</p>
-            <p v-if="onSale">On Sale!</p>
+            <p v-if="onSale">{{onSaleString}}</p>
             <p v-else>Not on Sale</p>
             <ul style="font-size: 1.3em;">
                 <li v-for="detail in details">{{detail}}</li>
