@@ -29,8 +29,7 @@
                 <a v-bind:href="productLink" target="_blank">{{product}}</a>
             </h1>
             <p>{{description}}</p>
-            <p v-if="inventory > 10">In Stock</p>
-            <p v-else-if="inventory <= 10 && inventory > 0 ">Almost out of Stock</p>
+            <p v-if="inStock">In Stock</p>
             <p v-else>Out of Stock</p>
             <p v-if="onSale">On Sale!</p>
             <p v-else>Not on Sale</p>
@@ -38,10 +37,15 @@
                 <li v-for="detail in details">{{detail}}</li>
             </ul>
             <div style="font-size: 1.3em;">Sizes: <span v-for="(size, idx) in sizes">{{size}}<span v-if="idx < sizes.length - 1">, </span></span></div>
-            <div style="font-size: 1.3em;" v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)"> >
+            <div style="font-size: 1.3em; margin-bottom: 1em;" v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)">
                 {{variant.color}}
             </div>
-            <button class="button" v-on:click="addToCart">Add to Cart</button>
+            
+            <!-- Display button using css style -->
+            <div style="display: flex; gap: 1em;">
+                <button class="button" style="min-width: 120px; padding: 0.7em 1.2em; font-size: 1.1em; border-radius: 8px; box-shadow: 0 2px 6px #ccc;" v-on:click="addToCart">Add to Cart</button>
+                <button class="button" style="min-width: 120px; padding: 0.7em 1.2em; font-size: 1.1em; border-radius: 8px; box-shadow: 0 2px 6px #ccc;" v-on:click="toggleInStock">Toggle In Stock</button>
+            </div>
             
         </div>
 

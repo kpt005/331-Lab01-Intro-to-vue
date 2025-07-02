@@ -26,6 +26,9 @@ const app = createApp({
     function updateImage(variantImage) {
       image.value = variantImage;
     }
+    function toggleInStock() {
+      inStock.value = !inStock.value;
+    }
     return {
       product,
       description,
@@ -39,7 +42,8 @@ const app = createApp({
       sizes,
       cart,
       addToCart,
-      updateImage
+      updateImage,
+      toggleInStock
     }
   }
 
