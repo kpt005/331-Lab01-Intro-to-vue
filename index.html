@@ -33,11 +33,11 @@
             <p v-else>Out of Stock</p>
             <p v-if="onSale">On Sale!</p>
             <p v-else>Not on Sale</p>
-            <ul>
+            <ul style="font-size: 1.3em;">
                 <li v-for="detail in details">{{detail}}</li>
             </ul>
-            <div>Sizes: <span v-for="(size, idx) in sizes">{{size}}<span v-if="idx < sizes.length - 1">, </span></span></div>
-            <div v-for="variant in variants" :key="variant.id">
+            <div style="font-size: 1.3em;">Sizes: <span v-for="(size, idx) in sizes">{{size}}<span v-if="idx < sizes.length - 1">, </span></span></div>
+            <div v-for="variant in variants" :key="variant.id" style="font-size: 1.3em;">
                 {{variant.color}}
             </div>
                 
