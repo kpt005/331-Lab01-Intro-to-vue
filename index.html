@@ -12,12 +12,24 @@
 
 <body>
     <div id="app">
-        <h1>{{product}}</h1>
-        <p>{{description}}</p>
-    </div>
+        
+        <div class="nav-bar"></div>
 
-    <!-- Import Js -->
-    <script src="./main.js"></script>
+        <div class="product-display">
+            <div class="product-container">
+                <div class="product-image">
+                    <img v-bind:src="image" alt="Boots" />
+                </div>
+            </div>
+        </div>
+
+        <div class="product-info">
+            <h1>{{product}}</h1>
+            <p>{{description}}</p>
+        </div>
+
+        <!-- Import Js -->
+        <script src="./main.js"></script>
 </body>
 
 </html>
