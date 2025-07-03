@@ -21,7 +21,16 @@
     <div id="app">
 
         <div class="nav-bar"></div>
-        <div class="cart">Cart({{cart}})</div>
+        <div class="cart">
+            Cart(
+            <span v-if="cart.length === 0">0</span>
+            <span v-else>
+                <span v-for="(count, id, idx) in cartCountMap" :key="id">
+                    {{ id }}: {{ count }}<span v-if="idx < Object.keys(cartCountMap).length - 1">, </span>
+                </span>
+            </span>
+            )
+        </div>
 
         <!-- Import ProductDisplay Component -->
         <product-display v-bind:premium="premium" @add-to-cart="updateCart"></product-display>
