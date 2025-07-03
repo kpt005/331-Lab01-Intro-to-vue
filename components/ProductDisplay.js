@@ -1,4 +1,5 @@
 const productDisplay = {
+  
   template:
     //html
     `
@@ -22,9 +23,8 @@ const productDisplay = {
             <p v-if="onSale">{{onSaleString}}</p>
             <p v-else>Not on Sale</p>
             <p>Shipping: {{ shipping }}</p>
-            <ul style="font-size: 1.3em;">
-                <li v-for="detail in details">{{detail}}</li>
-            </ul>
+            <!-- Product-details from components -->
+            <product-details :details="details"></product-details>
             <div style="font-size: 1.3em;">Sizes: <span v-for="(size, idx) in sizes">{{size}}<span v-if="idx < sizes.length - 1">, </span></span></div>
             <div style="font-size: 1.2em; " v-for="(variant,index) in variants" :key="variant.id" @mouseover="updateVariant(index)" class="color-circle" v-bind:style="{ backgroundColor: variant.color }">
                 {{variant.color}}
