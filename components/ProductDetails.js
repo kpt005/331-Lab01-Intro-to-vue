@@ -2,7 +2,6 @@ const productDetails = {
   props: {
     details: {
       type: Array,
-      required: true
     }
   },
   template: `

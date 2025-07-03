@@ -38,8 +38,10 @@ const productDisplay = {
             </div>
 
             <!-- Review Form -->
+            <review-list v-if="reviews.length" :reviews="reviews"></review-list>
             <review-form @review-submitted="addReview" ></review-form>
             
+
         </div>
 
     `,
@@ -124,6 +126,8 @@ const productDisplay = {
       updateImage,
       shipping,
       toggleInStock,
+      reviews,
+      addReview
     };
   },
 };
