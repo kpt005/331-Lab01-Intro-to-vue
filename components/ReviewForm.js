@@ -3,16 +3,16 @@ const reviewForm = {
     template: 
     //html
     `
-        <form class="review-form">
+        <form class="review-form" @submit.prevent="onSubmit">
             <h3>Leave a Review</h3>
             <label for="name">Name:</label>
-            <input id="name">
+            <input id="name" v-model="form.name" placeholder="Enter your name">
             
             <label for="review">Review:</label>
-            <textarea id="review"></textarea>
+            <textarea id="review" v-model="form.review"></textarea>
             
             <label for="rating">Rating:</label>
-            <select id="rating">
+            <select id="rating" v-model="form.rating">
                 <option disabled value="">Please select one</option>
                 <option>5</option>
                 <option>4</option>
@@ -24,14 +24,26 @@ const reviewForm = {
             <input class="button" type="submit" value="Submit">
         </form>
     `,
-    setup() {
+    setup(props, { emit }) {
         const form = reactive({
             name: '',
             review: '',
             rating: null
         })
+        function onSubmit() {
+            const productReview = {
+                name: form.name,
+                review: form.review,
+                rating: form.rating
+            }
+            emit('review-submitted', productReview);
+            form.name = '';
+            form.review = '';
+            form.rating = null;
+        }
         return {
-            form    
+            form,
+            onSubmit
         }
     }
 }

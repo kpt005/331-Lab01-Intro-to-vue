@@ -38,7 +38,7 @@ const productDisplay = {
             </div>
 
             <!-- Review Form -->
-            <review-form></review-form>
+            <review-form @review-submitted="addReview" ></review-form>
             
         </div>
 
@@ -78,12 +78,17 @@ const productDisplay = {
         return "30";
       }
     });
-
+    const reviews = ref([]);
+    
     function addToCart() {
       emit("add-to-cart", variants.value[selectedVariant.value].id);
     }
     function removeFromCart() {
       emit("remove-from-cart", variants.value[selectedVariant.value].id);
+    }
+    function addReview(review) {
+      reviews.value.push(review);
+      console.log(reviews.value);
     }
     const title = computed(() => {
       return `${brand.value} ${product.value}`;
