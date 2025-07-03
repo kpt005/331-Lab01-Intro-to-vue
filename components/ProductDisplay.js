@@ -21,6 +21,7 @@ const productDisplay = {
             <p v-else>Out of Stock</p>
             <p v-if="onSale">{{onSaleString}}</p>
             <p v-else>Not on Sale</p>
+            <p>Shipping: {{ shipping }}</p>
             <ul style="font-size: 1.3em;">
                 <li v-for="detail in details">{{detail}}</li>
             </ul>
@@ -38,7 +39,10 @@ const productDisplay = {
         </div>
 
     `,
-  setup() {
+  props: {
+    premium: Boolean
+    },
+    setup(props) {
     const product = ref("Boots");
     const brand = ref("SE 331");
     const description = ref("A pair of warm, comfortable boots.");
@@ -63,6 +67,13 @@ const productDisplay = {
     const selectedVariant = ref(0);
     const sizes = ref(["S", "M", "L"]);
     const cart = ref(0);
+    const shipping = computed(() => {
+      if (props.premium) {
+        return "Free";
+      } else {
+        return "30";
+      }
+    });
 
     function addToCart() {
       cart.value += 1;
@@ -98,6 +109,7 @@ const productDisplay = {
       addToCart,
       updateVariant,
       updateImage,
+      shipping,
       toggleInStock,
     };
   },
