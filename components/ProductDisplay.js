@@ -33,7 +33,8 @@ const productDisplay = {
             <!-- Display button using css style -->
             <div style="display: flex; gap: 1em;">
                 <button class="button" :disabled="!inStock || !onSale" @click="addToCart" :class="{'disabledButton': !inStock || !onSale}">Add to Cart</button>
-                <button class="button" style="min-width: 120px; padding: 0.7em 1.2em; font-size: 1.1em; border-radius: 8px; box-shadow: 0 2px 6px #ccc;"  v-on:click="toggleInStock">Toggle In Stock</button>
+                <button class="button remove-button" @click="removeFromCart">Remove from Cart</button>
+                <button class="button toggle-instock-button" @click="toggleInStock">Toggle In Stock</button>
             </div>
             
         </div>
@@ -78,6 +79,9 @@ const productDisplay = {
     function addToCart() {
       emit("add-to-cart", variants.value[selectedVariant.value].id);
     }
+    function removeFromCart() {
+      emit("remove-from-cart", variants.value[selectedVariant.value].id);
+    }
     const title = computed(() => {
       return `${brand.value} ${product.value}`;
     });
@@ -107,6 +111,7 @@ const productDisplay = {
       sizes,
       cart,
       addToCart,
+      removeFromCart,
       updateVariant,
       updateImage,
       shipping,

@@ -7,6 +7,12 @@ const app = createApp({
     function updateCart(id) {
       cart.value.push(id);
     }
+    function removeCart(id) {
+      const idx = cart.value.indexOf(id);
+      if (idx !== -1) {
+        cart.value.splice(idx, 1);
+      }
+    }
     const cartCountMap = computed(() => {
       const map = {};
       cart.value.forEach(id => {
@@ -18,6 +24,7 @@ const app = createApp({
       cart,
       premium,
       updateCart,
+      removeCart,
       cartCountMap
     };
   }
