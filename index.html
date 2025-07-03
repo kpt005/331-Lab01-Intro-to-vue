@@ -24,7 +24,7 @@
         <div class="cart">Cart({{cart}})</div>
 
         <!-- Import ProductDisplay Component -->
-        <product-display v-bind:premium="premium"></product-display>
+        <product-display v-bind:premium="premium" @add-to-cart="updateCart"></product-display>
         
     </div>
 
