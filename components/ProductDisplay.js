@@ -36,6 +36,9 @@ const productDisplay = {
                 <button class="button remove-button" @click="removeFromCart">Remove from Cart</button>
                 <button class="button toggle-instock-button" @click="toggleInStock">Toggle In Stock</button>
             </div>
+
+            <!-- Review Form -->
+            <review-form></review-form>
             
         </div>
 
