@@ -50,6 +50,7 @@ const productDisplay = {
       return variants.value[selectedVariant.value].quantity;
     });
     const inventory = ref(100);
+    // onSale boolean
     const onSale = ref(true);
     const onSaleString = computed(() => {
       return `${brand.value} ${product.value} is on sale!`;
